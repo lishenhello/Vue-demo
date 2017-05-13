@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>从父组件动态传数据到子组件</title>
+</head>
+<body>
+	<div id='app-17'>
+		<input type="text" v-model='message' placeholder="请输入你想输入的值">
+		<my-prop :my-prop='message'></my-prop>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+		Vue.component('my-prop',{
+			template:'<p>{{myProp}}</p>',
+			props:['myProp']
+		})
+		let app17 = new Vue({
+			el:'#app-17',
+			data:{
+				message:''
+			}
+		})
+	</script>
+</body>
+</html>

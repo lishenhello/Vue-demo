@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-demo3</title>
+</head>
+<body>
+	<div id="app-3">
+		<h1>请看下列例子</h1>
+		<p v-if='one'>我真的好帅,会不会挨打？</p>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+		var app3 = new Vue({
+			el:'#app-3',
+			data:{
+				one:true,
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-demo</title>
+</head>
+<body>
+	<div id="app-07">
+		<demo-aa-bb v-for='item in datas' v-bind:demo='item'></demo-aa-bb>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+	//自定义组件的基本用法。。 
+	//Vue.component声明自定义组件。。prop是父组件用来传递数据的一种属性。。template渲染模板。。注意。。自定义组件是不能在html中直接渲染的。。虚拟标签
+	Vue.component('demo-aa-bb',{
+				props:['demo'],
+				template:'<li>{{demo.text}}</li>'
+			})
+		let app7 = new Vue({
+			el:'#app-07',
+			data:{
+				datas:[
+					{text:'这是一个很长的故事'},
+					{text:'你可能看不到结局'},
+					{text:'但你必须在路上'}
+				]
+			}
+			})
+			
+	
+	</script>
+</body>
+</html>

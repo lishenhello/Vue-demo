@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤排序不改变原始数据(计算属性)</title>
+</head>
+<body>
+	<div id="app-13">
+		<ul>
+			<li v-for='item in evendatas'>{{item}}</li>
+		</ul>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+	let app13 = new Vue({
+		el:'#app-13',
+		data:{
+			datas:[1,2,3,4,5,6]
+		},
+		computed:{
+			evendatas:function(){
+				console.log(this);
+				return this.datas.filter(function(data){
+					console.log(data);
+					return data % 2 === 0;
+				})
+
+			}
+		}
+	})
+	</script>
+</body>
+</html>

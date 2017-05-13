@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件的特性</title>
+</head>
+<body>
+	<div id="app-16">
+		<my-name message='hello'></my-name>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+	Vue.component('my-name',{
+		props:['message'],
+		template:'<div>{{ message }}</div>',
+	})
+	let app16 = new Vue({
+		el:'#app-16',
+	})
+	</script>
+</body>
+</html>

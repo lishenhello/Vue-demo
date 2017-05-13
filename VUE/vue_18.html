@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>父组件用v-on来监听子组件的事件</title>
+</head>
+<body>
+	<div id="app-18">
+		<p>{{total}}</p>
+		<button-counter v-on:increment='incrementTotal'></button-counter>
+		<button-counter v-on:increment='incrementTotal'></button-counter>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+		//通过改变子组件的值，然后通过$emit传值,改变父组件的值。。
+		Vue.component('button-counter',{
+			template:'<button v-on:click="crement">{{counter}}</button>',
+			data:function(){
+				return {
+					counter:0
+				}
+			},
+			methods:{
+				crement:function(){
+					this.counter += 1;
+					this.$emit('increment');
+				}
+			}
+		})
+		let app18 = new Vue({
+			el:'#app-18',
+			data:{
+				total:0,
+			},
+			methods:{
+				incrementTotal:function(){
+					this.total += 1;
+				}
+			},
+		})
+	</script>
+</body>
+</html>

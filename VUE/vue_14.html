@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤排序不改变原始数据(计算属性不适用的情况下)</title>
+</head>
+<body>
+	<div id="app-14">
+		<ul>
+			<li v-for='item in even(datas)'>{{item}}</li>
+		</ul>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+	//在计算属性不适用的情况下，可通过methods方法来过滤筛选。。
+	let app14 = new Vue({
+		el:'#app-14',
+		data:{
+			datas:[1,2,3,4,5,6]
+		},
+		methods:{
+			even:function(datas){
+				return datas.filter(function(data){
+					return data % 2 === 0 ;
+				})
+			}
+		}
+	})
+
+	</script>
+</body>
+</html>

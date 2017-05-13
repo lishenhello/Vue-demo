@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todo_list(vue组件版)</title>
+</head>
+<body>
+	<div id="app-12">
+		<input type="text" v-model='newTodoText' v-on:keyup.enter='addNewTodo' placeholder="add a todo">
+		<ul>
+			<todo-item v-for='(todo,index) in todos' v-bind:key='todo' v-bind:title='todo' v-on:remove='todos.splice(index,1)'></todo-item>
+		</ul>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+	//所有的动态追加其实就是数据的改变已及重新渲染。。
+	//所有的改变都是通过对数据的操作。。
+	Vue.component('todo-item',{
+		template:`<li>{{title}}<button v-on:click="$emit('remove')">x</button></li>`,
+		props:['title']
+	})
+	let app12 = new Vue({
+		el:'#app-12',
+		data: {
+			newTodoText:'',
+			todos:[
+				'Do the dishes',
+      			'Take out the trash',
+      			'Mow the lawn'
+			]
+		},
+		methods:{
+			addNewTodo:function(){
+				this.todos.push(this.newTodoText);
+				this.newTodoText='';
+			}
+		}
+
+	})
+	</script>
+</body>
+</html>

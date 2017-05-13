@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue中Watch监控异步操作</title>
+</head>
+	<div id="watch-example">
+		<p>Ask yes/no question： <input type="text" v-model='question'></p>
+		<p>{{answer}}</p>
+	</div>
+<body>
+	<script src='https://unpkg.com/vue'></script>
+	<script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+	<script>
+	let app10 = new Vue({
+		el:'#watch-example',
+		data:{
+			question:'',
+			answer:'I cannot give you an answer until you ask a question!'
+		},
+		watch:{
+			question:function(newQuestion){
+				console.log(this);
+				this.answer='Waiting for you to stop typing...'
+				this.getAnswer();
+			}
+		},
+		methods:{
+			getAnswer:_.debounce(
+				function(){
+					if(this.question.indexOf('?')===-1) {
+						this.answer='Questions usually contain a question mark. ;-)'
+						return;
+					}
+					this.answer='thinking...';
+					console.log(this);
+					var that = this ;
+					axios.get('https://yesno.wtf/api').then(function(response){
+							that.answer=_.capitalize(response.data.answer)
+					})
+					.catch(function(err){
+						that.answer='错误信息'+error
+					})
+				},
+				500)
+		}
+	})
+	</script>
+</body>
+</html>

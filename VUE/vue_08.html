@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue.extend</title>
+</head>
+<script src='https://unpkg.com/vue'></script>
+<body>
+	<!-- Vue.extend  使用vue构造器创建一个子类构造器-->
+	<div id="app-08">
+		
+	</div>
+	<h1>Vue.extend的简单应用</h1>
+	<script>
+		let profile = Vue.extend({
+			template:'<p>{{firstName}}-{{lastName}}--{{why}}</p>',
+			data:function(){
+				return {
+					firstName:'自定义子类构造器',
+					lastName:'data在Vue.extend()中必须是函数',
+					why:'why?'
+				}
+			}
+		})
+		new profile().$mount('#app-08');
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击+1事件</title>
+</head>
+<body>
+	<div id="app-15">
+		<button v-on:click='message += 1'>点击+1</button>
+		<p>这个按钮被点击了{{message}}次</p>
+	</div>
+	<script src='https://unpkg.com/vue'></script>
+	<script>
+	let app15 = new Vue({
+		el:'#app-15',
+		data: {
+			message:0
+		}
+	})
+	</script>
+</body>
+</html>
